@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="slider">slider 1</div>
+    <div class="slider">slider 2</div>
+    <div class="slider">slider 3</div>
+    <div class="slider">slider 4</div>
+
+    <script>
+        let Sliderdata = document.getElementsByClassName("slider");
+        console.log(Sliderdata);
+        console.log(Sliderdata[0].style);
+
+        var counter = 0;
+        function slider() {
+            for (let index = 0; index < Sliderdata.length; index++) {
+                Sliderdata[index].style.display = "none";
+            }
+            Sliderdata[counter].style.display = "block";
+            console.log("slider function called", counter);
+            if (Sliderdata[counter].textContent.trim() === "slider 4") {
+                clearTimeout(timeoutId); // Stop the slider
+            } else {
+                counter++;
+              
+                var timeoutId = setTimeout(slider, 3000);
+            }
+        }
+        slider();
+    </script>
+</body>
+</html>
